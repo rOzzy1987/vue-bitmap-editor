@@ -1,9 +1,26 @@
 {
   "name": "@rozzy/vue-bitmap-editor",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
     "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/eslint-config-typescript": "^14.3.0",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^9.18.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "jiti": "^2.4.2",
+    "npm-run-all2": "^7.0.2",
+    "prettier": "^3.4.2",
+    "typescript": "~5.7.3",
+    "vite": "^6.0.11",
+    "vite-plugin-vue-devtools": "^7.7.1",
+    "vue-tsc": "^2.2.0"
   },
   "description": "1-bit bitmap editor component for Vue 3",
   "main": "BitmapEditor.vue",
@@ -13,7 +30,9 @@
   "scripts": {
     "translate": "node generateLabelsDefinition './src/content/labels.json'",
     "publish-only": "node publish -i",
-    "publish": "npm run translate && npm run publish-only"
+    "publish": "npm run translate && npm run publish-only",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/ ./*.js"
   },
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@ import BitmapToolbox from '../../src/BitmapToolbox.vue'
 
 export default {
   data(){
-    var pen = PENS[0];
+    const pen = PENS[0];
     pen.color = -1;
     return {
       bitmap: [

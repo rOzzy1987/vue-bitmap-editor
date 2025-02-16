@@ -22,7 +22,7 @@
 .bitmap-editor-tip,
 .bitmap-editor-tip * {
     box-sizing: border-box;
-} 
+}
 
 .bitmap-editor-tip .bubble,
 .bitmap-editor-tip .tail {
@@ -57,7 +57,7 @@
 .bitmap-editor-tip .bubble u {
     font-family: monospace;
     text-decoration: none;
-    background-color: rgba(0, 0, 0, .15);
+    background-color: rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     padding: 2px;
 }

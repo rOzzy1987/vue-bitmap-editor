@@ -1,83 +1,134 @@
 <template>
-    <div class="pixel-toolbox" :class="{ 'fixed': isFixed, 'animate': animate, 'left': left, 'right': !left }">
-        <button class="button is-light pin-toolbar" :title="T.toolbox_pin_unpin" :class="{ 'is-active': isFixed }"
-            @click="isFixed = !isFixed">
+    <div
+        class="pixel-toolbox"
+        :class="{ fixed: isFixed, animate: animate, left: left, right: !left }"
+    >
+        <button
+            class="button is-light pin-toolbar"
+            :title="T.toolbox_pin_unpin"
+            :class="{ 'is-active': isFixed }"
+            @click="isFixed = !isFixed"
+        >
             <span class="icon">
                 <i class="fas fa-thumbtack"></i>
             </span>
         </button>
         <div class="divider"></div>
-        <button class="button is-danger is-light" :class="{ 'is-active': pen.color == 1 }" @click="penProp.color = 1"
-            :title="T.toolbox_color_black">
+        <button
+            class="button is-danger is-light"
+            :class="{ 'is-active': pen.color == 1 }"
+            @click="penProp.color = 1"
+            :title="T.toolbox_color_black"
+        >
             <span class="icon">
-                <svg style="height: 16px; width: 16px;">
+                <svg style="height: 16px; width: 16px">
                     <path d="M0 0 L16 0 L16 16 L0 16 L0 0" style="fill: #000; stroke: #000" />
                 </svg>
             </span>
         </button>
-        <button class="button is-danger is-light" :class="{ 'is-active': pen.color == 0 }" @click="penProp.color = 0"
-            :title="T.toolbox_color_white">
+        <button
+            class="button is-danger is-light"
+            :class="{ 'is-active': pen.color == 0 }"
+            @click="penProp.color = 0"
+            :title="T.toolbox_color_white"
+        >
             <span class="icon">
-                <svg style="height: 16px; width: 16px;">
+                <svg style="height: 16px; width: 16px">
                     <path d="M0 0 L16 0 L16 16 L0 16 L0 0" style="fill: none; stroke: #000" />
                 </svg>
             </span>
         </button>
-        <button class="button is-danger is-light" :class="{ 'is-active': pen.color == -1 }" @click="penProp.color = -1"
-            :title="T.toolbox_color_invert">
+        <button
+            class="button is-danger is-light"
+            :class="{ 'is-active': pen.color == -1 }"
+            @click="penProp.color = -1"
+            :title="T.toolbox_color_invert"
+        >
             <span class="icon">
-                <svg style="height: 16px; width: 16px;">
+                <svg style="height: 16px; width: 16px">
                     <path d="M0 0 L16 0 L16 16 L0 16 L0 0" style="fill: none; stroke: #000" />
                     <path d="M0 16 L16 0 L16 16 L0 16" style="fill: #000; stroke: #000" />
                 </svg>
             </span>
         </button>
         <div class="divider"></div>
-        <button class="button is-warning is-light" :class="{ 'is-active': penSize == 0 }" @click="setPenSize(0)"
-            :title="T.toolbox_pen_s_square">
+        <button
+            class="button is-warning is-light"
+            :class="{ 'is-active': penSize == 0 }"
+            @click="setPenSize(0)"
+            :title="T.toolbox_pen_s_square"
+        >
             <span class="icon is-small">
                 <i class="fas fa-square"></i>
             </span>
         </button>
-        <button class="button is-warning is-light" :class="{ 'is-active': penSize == 1 }" @click="setPenSize(1)"
-            :title="T.toolbox_pen_m_square">
+        <button
+            class="button is-warning is-light"
+            :class="{ 'is-active': penSize == 1 }"
+            @click="setPenSize(1)"
+            :title="T.toolbox_pen_m_square"
+        >
             <span class="icon">
                 <i class="fas fa-square"></i>
             </span>
         </button>
-        <button class="button is-warning is-light" :class="{ 'is-active': penSize == 2 }" @click="setPenSize(2)"
-            :title="T.toolbox_pen_l_square">
+        <button
+            class="button is-warning is-light"
+            :class="{ 'is-active': penSize == 2 }"
+            @click="setPenSize(2)"
+            :title="T.toolbox_pen_l_square"
+        >
             <span class="icon is-large">
                 <i class="fas fa-square"></i>
             </span>
         </button>
-        <button class="button is-warning is-light" :class="{ 'is-active': penSize == 3 }" @click="setPenSize(3)"
-            :title="T.toolbox_pen_s_circle">
+        <button
+            class="button is-warning is-light"
+            :class="{ 'is-active': penSize == 3 }"
+            @click="setPenSize(3)"
+            :title="T.toolbox_pen_s_circle"
+        >
             <span class="icon is-small">
                 <i class="fas fa-circle"></i>
             </span>
         </button>
-        <button class="button is-warning is-light" :class="{ 'is-active': penSize == 4 }" @click="setPenSize(4)"
-            :title="T.toolbox_pen_m_circle">
+        <button
+            class="button is-warning is-light"
+            :class="{ 'is-active': penSize == 4 }"
+            @click="setPenSize(4)"
+            :title="T.toolbox_pen_m_circle"
+        >
             <span class="icon">
                 <i class="fas fa-circle"></i>
             </span>
         </button>
-        <button class="button is-warning is-light" :class="{ 'is-active': penSize == 5 }" @click="setPenSize(5)"
-            :title="T.toolbox_pen_l_circle">
+        <button
+            class="button is-warning is-light"
+            :class="{ 'is-active': penSize == 5 }"
+            @click="setPenSize(5)"
+            :title="T.toolbox_pen_l_circle"
+        >
             <span class="icon is-large">
                 <i class="fas fa-circle"></i>
             </span>
         </button>
         <div class="divider"></div>
-        <button class="button is-success is-light" :class="{ 'is-active': toolProp == ToolEnum.FILL }"
-            :title="T.toolbox_tool_fill" @click="toolProp = ToolEnum.FILL">
+        <button
+            class="button is-success is-light"
+            :class="{ 'is-active': toolProp == ToolEnum.FILL }"
+            :title="T.toolbox_tool_fill"
+            @click="toolProp = ToolEnum.FILL"
+        >
             <span class="icon">
                 <i class="fas fa-fill-drip"></i>
             </span>
         </button>
-        <button class="button is-success is-light" :class="{ 'is-active': toolProp == ToolEnum.PEN }" :title="T.toolbox_tool_pen"
-            @click="toolProp = ToolEnum.PEN">
+        <button
+            class="button is-success is-light"
+            :class="{ 'is-active': toolProp == ToolEnum.PEN }"
+            :title="T.toolbox_tool_pen"
+            @click="toolProp = ToolEnum.PEN"
+        >
             <span class="icon">
                 <i class="fas fa-pen"></i>
             </span>
@@ -97,68 +148,79 @@
 </template>
 
 <script lang="ts">
-import { Pen, PENS, Tool } from './Bitmap';
+import { Pen, PENS, Tool } from './Bitmap'
 import T from './content/i18n.ts'
-
 
 export default {
     data() {
-        const fixed = localStorage.getItem("pixelToolbarFixed") == 'true'
+        const fixed = localStorage.getItem('pixelToolbarFixed') == 'true'
 
         return {
             penSize: 0,
             ToolEnum: Tool,
             isFixed: fixed,
             animate: !fixed,
-            T
+            T,
         }
     },
     props: {
         pen: { type: Object, required: true },
         tool: { type: Number, required: true },
         zoom: { type: Number, default: 15 },
-        zooms: {type: Uint8Array, default: [5, 7, 10, 15, 20, 30, 45]},
-        left: {type: Boolean, default: true}
+        zooms: { type: Uint8Array, default: [5, 7, 10, 15, 20, 30, 45] },
+        left: { type: Boolean, default: true },
     },
     methods: {
         setPenSize(n: number) {
-            this.penProp.bitmap = PENS[n].bitmap.concat();
-            this.penProp.center = PENS[n].center;
-            this.penSize = n;
+            this.penProp.bitmap = PENS[n].bitmap.concat()
+            this.penProp.center = PENS[n].center
+            this.penSize = n
         },
         zoomIn(n: 1 | -1) {
-            let idx = this.zooms.findIndex(v => this.zoomProp <= v);
-            idx = idx == -1 ? this.zooms.length - 1 : idx;
-            if (this.zoomProp == this.zooms[idx]) idx += n;
-            else if (n == -1) idx--;
+            let idx = this.zooms.findIndex((v) => this.zoomProp <= v)
+            idx = idx == -1 ? this.zooms.length - 1 : idx
+            if (this.zoomProp == this.zooms[idx]) idx += n
+            else if (n == -1) idx--
 
-            idx = Math.max(0, Math.min(this.zooms.length - 1, idx));
+            idx = Math.max(0, Math.min(this.zooms.length - 1, idx))
 
-            this.zoomProp = this.zooms[idx];
-        }
+            this.zoomProp = this.zooms[idx]
+        },
     },
     computed: {
-        penProp(): Pen { return this.pen as Pen; },
+        penProp(): Pen {
+            return this.pen as Pen
+        },
         toolProp: {
-            get(): Tool { return this.tool; },
-            set(v: Tool) { this.$emit("update:tool", v); }
+            get(): Tool {
+                return this.tool
+            },
+            set(v: Tool) {
+                this.$emit('update:tool', v)
+            },
         },
         zoomProp: {
-            get(): number { return this.zoom; },
-            set(v: number) { this.$emit("update:zoom", v); }
-        }
+            get(): number {
+                return this.zoom
+            },
+            set(v: number) {
+                this.$emit('update:zoom', v)
+            },
+        },
     },
     watch: {
-        zoom(v: number) { localStorage.setItem("zoom", v.toFixed(0)); },
-        isFixed(v: boolean) { localStorage.setItem("pixelToolbarFixed", v.toString()); }
-    }
+        zoom(v: number) {
+            localStorage.setItem('zoom', v.toFixed(0))
+        },
+        isFixed(v: boolean) {
+            localStorage.setItem('pixelToolbarFixed', v.toString())
+        },
+    },
 }
-
 </script>
 
 <style scoped>
 @keyframes pxtool {
-
     0% {
         transform: translate(32px, 0);
     }
@@ -192,9 +254,9 @@ export default {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    background-color: #FFF;
-    box-shadow: 0 0 16px rgba(0, 0, 0, .3);
-    transition: all .2s ease-in-out;
+    background-color: #fff;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
     overflow-x: hidden;
@@ -227,7 +289,7 @@ export default {
 
 .pin-toolbar .icon {
     transform: rotate(60deg);
-    transition: transform .15s ease-in-out;
+    transition: transform 0.15s ease-in-out;
 }
 
 .pin-toolbar.is-active .icon {
@@ -236,7 +298,7 @@ export default {
 
 .divider {
     width: 100%;
-    border-top: 1px solid #888
+    border-top: 1px solid #888;
 }
 
 button {
@@ -254,6 +316,6 @@ button {
 }
 
 .icon.is-large {
-    font-size: 24px
+    font-size: 24px;
 }
 </style>
