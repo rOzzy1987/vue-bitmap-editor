@@ -1,0 +1,38 @@
+{
+    "en": {
+        "pixel_tip1": "Try drawing a line with <u>Shift</u> + <u>Click</u>!",
+        "pixel_tip2": "You can force a <i>pen</i> or <i>fill</i> color with <u>Ctrl</u> (white) and <u>Alt</u> (black)!",
+        "toolbox_pin_unpin": "Pin/unpin toolbox",
+        "toolbox_color_white": "Color: white",
+        "toolbox_color_black": "Color: black",
+        "toolbox_color_invert": "Color: invert",
+        "toolbox_pen_s_square": "Pen: small square",
+        "toolbox_pen_m_square": "Pen: medium square",
+        "toolbox_pen_l_square": "Pen: large square",
+        "toolbox_pen_s_circle": "Pen: small circle",
+        "toolbox_pen_m_circle": "Pen: medium circle",
+        "toolbox_pen_l_circle": "Pen: large circle",
+        "toolbox_tool_fill": "Tool: fill",
+        "toolbox_tool_pen": "Tool: pen",
+        "toolbox_zoom_in": "Zoom in",
+        "toolbox_zoom_out": "Zoom out"
+    },
+    "hu": {
+        "pixel_tip1": "Próbálj meg vonalat rajzolni <u>Shift</u> + <u>Klikk</u> használatával!",
+        "pixel_tip2": "Módosíthatod a <i>toll</i> vagy a <i>kitöltés</i> színét a <u>Ctrl</u> (fehér) vagy az <u>Alt</u> (fekete) billentyűkkel!",
+        "toolbox_pin_unpin": "Eszköztár rögzítése/feloldása",
+        "toolbox_color_white": "Szín: fehér",
+        "toolbox_color_black": "Szín: fekete",
+        "toolbox_color_invert": "Szín: inverz",
+        "toolbox_pen_s_square": "Toll: kis négyzet",
+        "toolbox_pen_m_square": "Toll: közepes négyzet",
+        "toolbox_pen_l_square": "Toll: nagy négyzet",
+        "toolbox_pen_s_circle": "Toll: kis kör",
+        "toolbox_pen_m_circle": "Toll: közepes kör",
+        "toolbox_pen_l_circle": "Toll: nagy kör",
+        "toolbox_tool_fill": "Eszköz: kitöltés",
+        "toolbox_tool_pen": "Eszköz: toll",
+        "toolbox_zoom_in": "Nagyítás",
+        "toolbox_zoom_out": "Kicsinyítés"
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@rozzy/vue-bitmap-editor",
+  "version": "0.1.1",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.3.0",
+    "vue": "^3.2.47"
+  },
+  "description": "1-bit bitmap editor component for Vue 3",
+  "main": "BitmapEditor.vue",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "translate": "node generateLabelsDefinition './src/content/labels.json'",
+    "publish-only": "node publish -i",
+    "publish": "npm run translate && npm run publish-only"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rOzzy1987/vue-bitmap-editor"
+  },
+  "keywords": [
+    "bitmap",
+    "editor",
+    "1bit",
+    "black",
+    "white",
+    "black&white",
+    "vue3",
+    "vue",
+    "typescript"
+  ],
+  "files": [
+    "src/*",
+    "examples/*.html",
+    "examples/*.json",
+    "examples/*.ts",
+    "examples/*.cjs",
+    "examples/src/*"
+  ],
+  "author": "Mihály Rozovits <rozovits.mihaly@gmail.com>",
+  "license": "MIT"
+}
