@@ -29,7 +29,7 @@
   },
   "scripts": {
     "translate": "node generateLabelsDefinition './src/content/labels.json'",
-    "publish-only": "node publish -i",
+    "publish-only": "node publish-npm -i",
     "publish": "npm run translate && npm run publish-only",
     "lint": "eslint . --fix",
     "format": "prettier --write src/ ./*.js"
