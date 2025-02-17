@@ -1,15 +1,15 @@
 {
   "name": "@rozzy/vue-bitmap-editor",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "type": "module",
   "description": "1-bit bitmap editor component for Vue 3",
   "author": "Mihály Rozovits <rozovits.mihaly@gmail.com>",
   "license": "MIT",
   "main": "./dist/vue-bitmap-editor.js",
   "files": [
-    "dist/", 
-    "examples/", 
-    "!examples/node_modules/" 
+    "dist/",
+    "examples/",
+    "!examples/node_modules/"
   ],
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
@@ -58,7 +58,7 @@
   "exports": {
     ".": {
       "require": "./dist/vue-bitmap-editor.umd.cjs",
-      "import": "./dist/vue-bitmap-editor.js" 
-    } 
+      "import": "./dist/vue-bitmap-editor.js"
+    }
   }
 }
