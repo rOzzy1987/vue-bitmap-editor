@@ -15,6 +15,7 @@
 // eslint-disable-file @typescript-eslint/no-require-imports
 var fs = require('fs')
 var { spawn } = require('child_process')
+const { spawnSync } = require('child_process')
 
 var argv = process.argv.slice(2)
 var argc = argv.length
@@ -33,34 +34,27 @@ console.error = function (...args) {
 }
 
 function runCmd(cmd, args) {
-    console.log('[RunCmd] Running command: ' + cmd + ' ' + args.join(' ') + '\n')
-    var prc = spawn(cmd, args)
-    var out = ''
-    return new Promise((res, rej) => {
-        prc.stdout.on('data', (x) => {
-            out += x.toString()
-            console.log(x.toString())
-        })
-        prc.stderr.on('data', (x) => {
-            console.error(x)
-        })
-        prc.on('error', (e) => {
-            console.error(e)
-            rej(err.message)
-        })
-        prc.on('exit', (c) => {
-            if (c > 0) {
-                console.error(`[RunCmd] Process exited with code ${c}\n`)
-                rej(c)
-            } else {
-                console.log(`[RunCmd] Process exited with code ${c}\n`)
-                res(out)
-            }
-        })
-    })
+    console.log(`[RunCmd] Running command: ${cmd} ${args.join(' ')}`)
+    var res = spawnSync(cmd, args)
+    function removeEmptyLines(ls) {
+        if (ls == undefined) return []
+        for (var i = ls.length - 1; i >= 0; i--)
+            if (ls[i].trimEnd() == '') ls.pop()
+            else return ls
+        return ls
+    }
+    console.log(...removeEmptyLines(res.stdout.toString().split('\n')))
+    console.error(...removeEmptyLines(res.stderr.toString().split('\n')))
+    if (res.status != 0) {
+        console.error(`[RunCmd] Process exited with code ${res.status}\n`)
+        throw `[RunCmd] Error Running command: ${cmd} ${args.join(' ')}`
+    } else {
+        console.log(`[RunCmd] Process exited with code ${res.status}\n`)
+    }
+    return res.stdout.toString()
 }
 
-async function checkArguments(argc, argv) {
+function checkArguments(argc, argv) {
     var increment = false
     var message = undefined
     for (var i = 0; i < argc; i++) {
@@ -70,11 +64,11 @@ async function checkArguments(argc, argv) {
     }
 
     if (increment) {
-        await incrementVersion(message)
+        incrementVersion(message)
     }
 }
 
-async function incrementVersion(message) {
+function incrementVersion(message) {
     var rawdata = fs.readFileSync('package.json')
     var packJson = JSON.parse(rawdata)
 
@@ -89,8 +83,8 @@ async function incrementVersion(message) {
 
     console.log('[Publish] package.json updated, new version: ' + packJson.version)
 
-    await runCmd('git', ['add', 'package.json'])
-    var status = await runCmd('git', ['status', '-s'])
+    runCmd('git', ['add', 'package.json'])
+    var status = runCmd('git', ['status', '-s'])
     var changes = status
         .split(/\n/)
         .map((l) => l.trimEnd())
@@ -100,9 +94,9 @@ async function incrementVersion(message) {
         var msgLines = message == undefined ? [] : [message]
         msgLines.push(`version bump to ${packJson.version}`)
 
-        await runCmd('git', ['commit', '-m', msgLines.join('\n')])
+        runCmd('git', ['commit', '-m', msgLines.join('\n')])
         console.log('[Publish] committed')
-        await runCmd('git', ['push'])
+        runCmd('git', ['push'])
         console.log('[Publish] pushed')
     } else {
         console.log('[Publish] Unstaged changes present, skipping commit & push')
@@ -117,7 +111,7 @@ async function publish() {
         .filter((l) => l != '')
     if (changes.every((l) => l == '')) {
         console.log('[Publish] No changes, starting publish')
-        await runCmd(/^win/i.test(process.platform) ? 'npm.cmd' : 'npm', [
+        await runCmdSync(/^win/i.test(process.platform) ? 'npm.cmd' : 'npm', [
             'publish',
             '--access',
             'public',
@@ -128,9 +122,5 @@ async function publish() {
     }
 }
 
-async function main() {
-    await checkArguments(argc, argv)
-    await publish()
-}
-
-main()
+checkArguments(argc, argv)
+publish()
