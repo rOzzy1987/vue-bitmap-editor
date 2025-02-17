@@ -1,7 +1,16 @@
 {
   "name": "@rozzy/vue-bitmap-editor",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "type": "module",
+  "description": "1-bit bitmap editor component for Vue 3",
+  "author": "Mihály Rozovits <rozovits.mihaly@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/vue-bitmap-editor.js",
+  "files": [
+    "dist/", 
+    "examples/", 
+    "!examples/node_modules/" 
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
     "vue": "^3.2.47"
@@ -24,15 +33,10 @@
     "vue-tsc": "^2.2.0",
     "webpack": "^3.5.5"
   },
-  "description": "1-bit bitmap editor component for Vue 3",
-  "main": "BitmapEditor.vue",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
-    "translate": "node generateLabelsDefinition './src/content/labels.json'",
-    "publish-only": "node publish-npm -i",
-    "publish": "npm run translate && npm run publish-only",
+    "translate": "node ./generateLabelsDefinition.cjs './src/content/labels.json'",
+    "publish-only": "node ./publish-npm.cjs -i",
+    "publish": "npm run translate && npm run build && npm run publish-only",
     "lint": "eslint . --fix",
     "format": "prettier --write src/ ./*.js",
     "build": "vite build"
@@ -49,17 +53,12 @@
     "white",
     "black&white",
     "vue3",
-    "vue",
-    "typescript"
+    "vue"
   ],
-  "files": [
-    "dist/*",
-    "examples/*.html",
-    "examples/*.json",
-    "examples/*.ts",
-    "examples/*.cjs",
-    "examples/src/*"
-  ],
-  "author": "Mihály Rozovits <rozovits.mihaly@gmail.com>",
-  "license": "MIT"
+  "exports": {
+    ".": {
+      "require": "./dist/vue-bitmap-editor.umd.cjs",
+      "import": "./dist/vue-bitmap-editor.js" 
+    } 
+  }
 }
