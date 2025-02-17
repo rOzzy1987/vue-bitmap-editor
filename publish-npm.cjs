@@ -43,8 +43,8 @@ function runCmd(cmd, args) {
             else return ls
         return ls
     }
-    console.log(...removeEmptyLines(res.stdout.toString().split('\n')))
-    console.error(...removeEmptyLines(res.stderr.toString().split('\n')))
+    for (var l of removeEmptyLines(res.stdout.toString().split('\n'))) console.log(l)
+    for (var l of removeEmptyLines(res.stderr.toString().split('\n'))) console.error(l)
     if (res.status != 0) {
         console.error(`[RunCmd] Process exited with code ${res.status}\n`)
         throw `[RunCmd] Error Running command: ${cmd} ${args.join(' ')}`
