@@ -111,7 +111,7 @@ async function publish() {
         .filter((l) => l != '')
     if (changes.every((l) => l == '')) {
         console.log('[Publish] No changes, starting publish')
-        await runCmdSync(/^win/i.test(process.platform) ? 'npm.cmd' : 'npm', [
+        await runCmd(/^win/i.test(process.platform) ? 'npm.cmd' : 'npm', [
             'publish',
             '--access',
             'public',
