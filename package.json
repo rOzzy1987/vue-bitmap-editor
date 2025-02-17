@@ -1,6 +1,6 @@
 {
   "name": "@rozzy/vue-bitmap-editor",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "type": "module",
   "description": "1-bit bitmap editor component for Vue 3",
   "author": "Mihály Rozovits <rozovits.mihaly@gmail.com>",
