@@ -172,8 +172,8 @@ export default {
     },
     methods: {
         setPenSize(n: number) {
-            this.penProp.bitmap = PENS[n].bitmap.concat()
-            this.penProp.center = PENS[n].center
+            this.penProp.bitmap = PENS[n].bitmap!.concat()
+            this.penProp.center = PENS[n].center!
             this.penSize = n
         },
         zoomIn(n: 1 | -1) {

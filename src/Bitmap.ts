@@ -8,7 +8,7 @@ export class Pen {
     center: Point = { x: 0, y: 0 }
     color: PenColor = -1
 
-    public constructor(init: Partial<Pen>) {
+    public constructor(init: Partial<Pen> = {}) {
         Object.assign(this, init)
     }
 }

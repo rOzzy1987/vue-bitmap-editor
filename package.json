@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
+    "vite-plugin-dts": "^4.5.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
